@@ -132,6 +132,14 @@ module.exports = function (
     },
     templateScripts
   );
+  appPackage.babel = {
+    "plugins": [
+      ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    ],
+    "presets": [
+      "react-app"
+    ]
+  }
 
   // Update scripts for Yarn users
   if (useYarn) {
