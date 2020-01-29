@@ -1,11 +1,3 @@
-// @remove-file-on-eject
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 'use strict';
 
 const chalk = require('react-dev-utils/chalk');
@@ -18,14 +10,7 @@ const path = require('path');
 // This is a relatively low-effort way to find common issues.
 function verifyPackageTree() {
   const depsToCheck = [
-    // These are packages most likely to break in practice.
-    // See https://github.com/zhaokgithub/devops-react-cli/issues/1795 for reasons why.
-    // I have not included Babel here because plugins typically don't import Babel (so it's not affected).
-    'babel-eslint',
-    'babel-jest',
     'babel-loader',
-    'eslint',
-    'jest',
     'webpack',
     'webpack-dev-server',
   ];
