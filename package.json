@@ -26,7 +26,6 @@
   "bin": {
     "devops-react-server": "./bin/index.js"
   },
-  "types": "./lib/react-app.d.ts",
   "dependencies": {
     "@babel/core": "7.7.5",
     "@babel/plugin-proposal-decorators": "^7.7.4",
