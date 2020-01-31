@@ -288,7 +288,6 @@ module.exports = function(webpackEnv) {
         .map(ext => `.${ext}`)
         .filter(ext => !ext.includes('ts')),
       alias: {
-        'react-native': 'react-native-web',
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
