@@ -56,7 +56,6 @@ function getAdditionalModulePaths(options = {}) {
 /**
  * Get webpack aliases based on the baseUrl of a compilerOptions object.
  * Set the "src" to based on the baseUrl of  a compilerOptions object if the baseUrl is not defined.
- * @param {*} options
  */
 function getWebpackAliases(options = {}) {
   const baseUrl = options.baseUrl ? options.baseUrl : '/src';
