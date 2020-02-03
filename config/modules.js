@@ -1,11 +1,3 @@
-// @remove-on-eject-begin
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-// @remove-on-eject-end
 'use strict';
 
 const fs = require('fs');
@@ -16,14 +8,12 @@ const resolve = require('resolve');
 
 /**
  * Get additional module paths based on the baseUrl of a compilerOptions object.
- *
  * @param {Object} options
  */
 function getAdditionalModulePaths(options = {}) {
   const baseUrl = options.baseUrl;
 
   // We need to explicitly check for null and undefined (and not a falsy value) because
-  // TypeScript treats an empty string as `.`.
   if (baseUrl == null) {
     // If there's no baseUrl set we respect NODE_PATH
     // Note that NODE_PATH is deprecated and will be removed

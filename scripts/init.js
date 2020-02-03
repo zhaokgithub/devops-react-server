@@ -1,10 +1,3 @@
-// @remove-file-on-eject
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 'use strict';
 
 // Makes the script crash on unhandled rejections instead of silently
@@ -84,7 +77,6 @@ module.exports = function (
 ) {
 
   const appPackage = require(path.join(appPath, 'package.json'));
-  console.log('----packge.json路径为：-------' + path.join(appPath, 'package.json'))
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
   if (!templateName) {
     console.error(
@@ -92,15 +84,8 @@ module.exports = function (
         'devops-react-cli'
       )}.`
     );
-    console.error(
-      `Please note that global installs of ${chalk.cyan(
-        'devops-react-cli'
-      )} are no longer supported.`
-    );
     return;
   }
-  console.log('------- get template path------')
-  //获取初始化项目模版文件夹路径
   const templatePath = path.join(
     require.resolve(templateName, { paths: [appPath] }),
     '..'
@@ -128,7 +113,6 @@ module.exports = function (
       start: 'devops-react-server start',
       build: 'devops-react-server build',
       test: 'devops-react-server test',
-      eject: 'devops-react-server eject',
     },
     templateScripts
   );
