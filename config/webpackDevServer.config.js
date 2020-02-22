@@ -62,8 +62,7 @@ module.exports = function(proxy, allowedHost) {
       }
     },
     after(app) {
-      // app.use(redirectServedPath(paths.publicUrlOrPath));
-      app.use(noopServiceWorkerMiddleware(paths.appSrc));
+      // app.use(noopServiceWorkerMiddleware(paths.appSrc));
     },
   };
 };
