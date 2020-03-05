@@ -37,13 +37,14 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     proxy,
     before(app, server) {
+      app.use(evalSourceMapMiddleware(server));
+      app.use(errorOverlayMiddleware());
       if (fs.existsSync(paths.proxySetup)) {
         require(paths.proxySetup)(app);
       }
-
-      app.use(evalSourceMapMiddleware(server));
-      app.use(errorOverlayMiddleware());
-      app.use(noopServiceWorkerMiddleware());
+    },
+    after(app) {
+      // app.use(noopServiceWorkerMiddleware(paths.appSrc));
     },
   };
 };
