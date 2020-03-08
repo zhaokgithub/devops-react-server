@@ -26,7 +26,7 @@ It works in tandem with [HtmlWebpackPlugin](https://github.com/ampedandwired/htm
 ```js
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+var InterpolateHtmlPlugin = require('util/InterpolateHtmlPlugin');
 
 // webpack config
 var publicUrl = '/my-custom-url';
