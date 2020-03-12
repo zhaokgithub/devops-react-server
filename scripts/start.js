@@ -9,7 +9,7 @@ if (process.argv[2] && process.argv[2] === '--env' && process.argv[3]) {
   process.env.NODE_ENV = 'development';
 }
 
-console.log(chalk.yellow('the current environment is' + process.env.NODE_ENV))
+console.log(chalk.yellow('the current environment is ' + process.env.NODE_ENV))
 
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
