@@ -72,7 +72,7 @@ module.exports = function(webpackEnv) {
   // Get environment variables to inject into our app.
   const env = getClientEnvironment(publicUrl);
 
-  // common function to get style loaders
+  // 配置 style（less sass css）
   const getStyleLoaders = (cssOptions, preProcessor,option) => {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
@@ -235,7 +235,6 @@ module.exports = function(webpackEnv) {
               ecma: 5,
               comments: false,
               // Turned on because emoji and regex is not minified properly using default
-              // https://github.com/zhaokgithub/devops-react-cli/issues/2488
               ascii_only: true,
             },
           },
@@ -250,8 +249,6 @@ module.exports = function(webpackEnv) {
                   // `inline: false` forces the sourcemap to be output into a
                   // separate file
                   inline: false,
-                  // `annotation: true` appends the sourceMappingURL to the end of
-                  // the css file, helping the browser find the sourcemap
                   annotation: true,
                 }
               : false,
@@ -276,10 +273,7 @@ module.exports = function(webpackEnv) {
       },
     },
     resolve: {
-      // This allows you to set a fallback for where Webpack should look for modules.
-      // We placed these paths second because we want `node_modules` to "win"
-      // if there are any conflicts. This matches Node resolution mechanism.
-      // https://github.com/zhaokgithub/devops-react-cli/issues/253
+      // 解析模块时应该搜索的目录
       modules: ['node_modules', paths.appNodeModules].concat(
         modules.additionalModulePaths || []
       ),
@@ -293,7 +287,7 @@ module.exports = function(webpackEnv) {
         .map(ext => `.${ext}`)
         .filter(ext => !ext.includes('ts')),
       alias: {
-        // Allows for better profiling with ReactDevTools
+        // 设置文件目录别名
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
           'scheduler/tracing': 'scheduler/tracing-profiling',
@@ -304,18 +298,12 @@ module.exports = function(webpackEnv) {
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
         // guards against forgotten dependencies and such.
         PnpWebpackPlugin,
-        // Prevents users from importing files from outside of src/ (or node_modules/).
-        // This often causes confusion because we only process files within src/ with babel.
-        // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
-        // please link the files into your node_modules/ and let module-resolution kick in.
-        // Make sure your source files are compiled, as they will not be processed in any way.
         new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
       ],
     },
     resolveLoader: {
       plugins: [
         // Also related to Plug'n'Play, but this time it tells Webpack to load its loaders
-        // from the current package.
         PnpWebpackPlugin.moduleLoader(module),
       ],
     },

@@ -4,9 +4,8 @@ const path = require('path');
 const fs = require('fs');
 const url = require('url');
 
-// Make sure any symlinks in the project folder are resolved:
-// https://github.com/zhaokgithub/devops-react-cli/issues/637
 const appDirectory = fs.realpathSync(process.cwd());
+//获取绝对路径
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const envPublicUrl = process.env.PUBLIC_URL;
@@ -58,27 +57,6 @@ const resolveModule = (resolveFn, filePath) => {
 
   return resolveFn(`${filePath}.js`);
 };
-
-// config after eject: we're in ./config/
-module.exports = {
-  dotenv: resolveApp('.env'),
-  appPath: resolveApp('.'),
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveModule(resolveApp, 'src/index'),
-  appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
-  appTsConfig: resolveApp('tsconfig.json'),
-  appJsConfig: resolveApp('jsconfig.json'),
-  yarnLockFile: resolveApp('yarn.lock'),
-  testsSetup: resolveModule(resolveApp, 'src/setupTests'),
-  proxySetup: resolveApp('src/setupProxy.js'),
-  appNodeModules: resolveApp('node_modules'),
-  publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json')),
-};
-
 // @remove-on-eject-begin
 const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
 
@@ -92,10 +70,8 @@ module.exports = {
   appIndexJs: resolveModule(resolveApp, 'src/index'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
-  appTsConfig: resolveApp('tsconfig.json'),
   appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
-  testsSetup: resolveModule(resolveApp, 'src/setupTests'),
   proxySetup: resolveApp('src/setupProxy.js'),
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
@@ -126,10 +102,8 @@ if (
     appIndexJs: resolveModule(resolveOwn, `${templatePath}/src/index`),
     appPackageJson: resolveOwn('package.json'),
     appSrc: resolveOwn(`${templatePath}/src`),
-    appTsConfig: resolveOwn(`${templatePath}/tsconfig.json`),
     appJsConfig: resolveOwn(`${templatePath}/jsconfig.json`),
     yarnLockFile: resolveOwn(`${templatePath}/yarn.lock`),
-    testsSetup: resolveModule(resolveOwn, `${templatePath}/src/setupTests`),
     proxySetup: resolveOwn(`${templatePath}/src/setupProxy.js`),
     appNodeModules: resolveOwn('node_modules'),
     publicUrl: getPublicUrl(resolveOwn('package.json')),

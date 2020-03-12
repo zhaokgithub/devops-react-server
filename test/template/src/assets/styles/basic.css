@@ -1,0 +1,10 @@
+.layout-sider-logo,.layout-header{
+    height: 50px;
+}
+.layout-content{
+    background-color: #ffffff;
+    padding:10px;
+    margin-top: 5px;
+    min-height: 600px;
+    height: 95%;
+}

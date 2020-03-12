@@ -15,11 +15,8 @@ function getAdditionalModulePaths(options = {}) {
 
   // We need to explicitly check for null and undefined (and not a falsy value) because
   if (baseUrl == null) {
-    // If there's no baseUrl set we respect NODE_PATH
-    // Note that NODE_PATH is deprecated and will be removed
-    // in the next major release of devops-react-cli.
-
-    const nodePath = process.env.NODE_PATH || '';
+    //读取.env文件中设置的变量NODE_PATH
+    const nodePath = process.env.NODE_PATH || 'src/';
     return nodePath.split(path.delimiter).filter(Boolean);
   }
 
@@ -70,38 +67,17 @@ function getWebpackAliases(options = {}) {
   }
 }
 
-/**
- * Get jest aliases based on the baseUrl of a compilerOptions object.
- *
- * @param {*} options
- */
-function getJestAliases(options = {}) {
-  const baseUrl = options.baseUrl;
-
-  if (!baseUrl) {
-    return {};
-  }
-
-  const baseUrlResolved = path.resolve(paths.appPath, baseUrl);
-
-  if (path.relative(paths.appPath, baseUrlResolved) === '') {
-    return {
-      '^src/(.*)$': '<rootDir>/src/$1',
-    };
-  }
-}
-
 function getModules() {
+  //判断jsconfig.json配置文件是否存在
   const hasJsConfig = fs.existsSync(paths.appJsConfig);
   let config;
   if (hasJsConfig) {
+    //获取json配置文件的内容
     config = require(paths.appJsConfig);
   }
   config = config || {};
   const options = config.compilerOptions || {};
-
   const additionalModulePaths = getAdditionalModulePaths(options);
-
   return {
     additionalModulePaths: additionalModulePaths,
     webpackAliases: getWebpackAliases(options)

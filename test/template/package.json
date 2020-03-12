@@ -1,0 +1,57 @@
+{
+  "name": "template",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "antd": "3.26.11",
+    "axios": "0.19.2",
+    "dayjs": "1.8.20",
+    "devops-react-server": "1.1.x",
+    "mobx": "5.15.4",
+    "mobx-react": "^6.1.8",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-router": "5.1.2",
+    "react-router-dom": "^5.1.2"
+  },
+  "scripts": {
+    "start": "devops-react-server start",
+    "build": "devops-react-server build",
+    "test": "devops-react-server test"
+  },
+  "babel": {
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ],
+    "presets": [
+      "react-app"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5"
+  }
+}
