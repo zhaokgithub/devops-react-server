@@ -13,7 +13,7 @@ const chalk = require('react-dev-utils/chalk');
 const execSync = require('child_process').execSync;
 const spawn = require('react-dev-utils/crossSpawn');
 const os = require('os');
-const verifyTypeScriptSetup = require('./utils/verifyTypeScriptSetup');
+const verifyTypeScriptSetup = require('../lib/utils/verifyTypeScriptSetup');
 
 function isInGitRepository() {
   try {

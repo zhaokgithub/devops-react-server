@@ -1,6 +1,6 @@
 {
   "name": "devops-react-server",
-  "version": "1.1.7",
+  "version": "1.1.9",
   "description": "Configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "config",
     "lib",
     "scripts",
-    "utils"
+    "lib/utils"
   ],
   "bin": {
     "devops-react-server": "./bin/index.js"
