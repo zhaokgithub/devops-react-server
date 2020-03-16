@@ -28,11 +28,11 @@ process.on('unhandledRejection', err => {
 require('../config/env');
 // @remove-on-eject-begin
 // Do the preflight checks (only happens before eject).
-const verifyPackageTree = require('./utils/verifyPackageTree');
+const verifyPackageTree = require('../lib/utils/verifyPackageTree');
 if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
   verifyPackageTree();
 }
-const verifyTypeScriptSetup = require('./utils/verifyTypeScriptSetup');
+const verifyTypeScriptSetup = require('../lib/utils/verifyTypeScriptSetup');
 verifyTypeScriptSetup();
 
 const path = require('path');
