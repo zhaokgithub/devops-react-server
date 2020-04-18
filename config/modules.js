@@ -52,8 +52,7 @@ function getAdditionalModulePaths(options = {}) {
 }
 
 /**
- * Get webpack aliases based on the baseUrl of a compilerOptions object.
- * Set the "src" to based on the baseUrl of  a compilerOptions object if the baseUrl is not defined.
+ * 
  */
 function getWebpackAliases(options = {}) {
   const baseUrl = options.baseUrl ? options.baseUrl : '/src';
@@ -78,6 +77,7 @@ function getModules() {
   config = config || {};
   const options = config.compilerOptions || {};
   const additionalModulePaths = getAdditionalModulePaths(options);
+  //设置alias（目录别名）
   return {
     additionalModulePaths: additionalModulePaths,
     webpackAliases: getWebpackAliases(options)

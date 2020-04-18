@@ -1,14 +1,11 @@
-// @remove-on-eject-begin
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-// @remove-on-eject-end
+
 'use strict';
 
-// Do this as the first thing so that any code reading it knows the right env.
+process.on('unhandledRejection', err => {
+  throw err;
+});
+
+//根据传入参数设置环境变量 默认为production
 if (process.argv[2] && process.argv[2] === '--env' && process.argv[3]) {
   process.env.BABEL_ENV = process.argv[3];
   process.env.NODE_ENV = process.argv[3];
@@ -17,17 +14,11 @@ if (process.argv[2] && process.argv[2] === '--env' && process.argv[3]) {
   process.env.NODE_ENV = 'production';
 }
 
-// Makes the script crash on unhandled rejections instead of silently
-// ignoring them. In the future, promise rejections that are not handled will
-// terminate the Node.js process with a non-zero exit code.
-process.on('unhandledRejection', err => {
-  throw err;
-});
+console.log(chalk.yellow('the current env is ' + process.env.NODE_ENV))
 
 // Ensure environment variables are read.
 require('../config/env');
-// @remove-on-eject-begin
-// Do the preflight checks (only happens before eject).
+
 const verifyPackageTree = require('../lib/utils/verifyPackageTree');
 if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
   verifyPackageTree();
@@ -150,9 +141,6 @@ checkBrowsers(paths.appPath, isInteractive)
 
 // Create the production build and print the deployment instructions.
 function build(previousFileSizes) {
-  // We used to support resolving modules according to `NODE_PATH`.
-  // This now has been deprecated in favor of jsconfig/tsconfig.json
-  // This lets you use absolute paths in imports inside large monorepos:
   if (process.env.NODE_PATH) {
     console.log(
       chalk.yellow(

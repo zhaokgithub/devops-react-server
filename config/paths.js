@@ -4,8 +4,9 @@ const path = require('path');
 const fs = require('fs');
 const url = require('url');
 
+//获取执行时候的目录
 const appDirectory = fs.realpathSync(process.cwd());
-//获取绝对路径
+//获取绝对路径appDirectory+relativePath
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const envPublicUrl = process.env.PUBLIC_URL;
@@ -60,7 +61,6 @@ const resolveModule = (resolveFn, filePath) => {
 // @remove-on-eject-begin
 const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
 
-// config before eject: we're in ./node_modules/react-scripts/config/
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
