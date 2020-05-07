@@ -19,6 +19,7 @@ module.exports = function(proxy, allowedHost) {
     clientLogLevel: 'none',
     contentBase: paths.appPublic,
     watchContentBase: true,
+    //热加载
     hot: true,
     transportMode: 'ws',
     injectClient: false,

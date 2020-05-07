@@ -52,7 +52,7 @@ function getAdditionalModulePaths(options = {}) {
 }
 
 /**
- * 
+ * 设置目录别名
  */
 function getWebpackAliases(options = {}) {
   const baseUrl = options.baseUrl ? options.baseUrl : '/src';
