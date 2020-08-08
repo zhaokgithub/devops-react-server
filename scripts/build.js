@@ -5,16 +5,18 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
+process.env.NODE_ENV = 'production';
 //根据传入参数设置环境变量 默认为production
 if (process.argv[2] && process.argv[2] === '--env' && process.argv[3]) {
   process.env.BABEL_ENV = process.argv[3];
-  process.env.NODE_ENV = process.argv[3];
 } else {
   process.env.BABEL_ENV = 'production';
-  process.env.NODE_ENV = 'production';
+}
+if (process.argv[2] && process.argv[2] === '--node_env' && process.argv[3]) {
+  process.env.NODE_ENV = process.argv[3];
 }
 
-console.log(chalk.yellow('the current env is ' + process.env.NODE_ENV))
+console.log(chalk.yellow('the current node env is ' + process.env.NODE_ENV))
 
 // Ensure environment variables are read.
 require('../config/env');
